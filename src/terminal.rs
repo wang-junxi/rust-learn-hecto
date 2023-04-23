@@ -1,4 +1,5 @@
 use std::io::{stdin, stdout, Error, Stdout, Write};
+use termion::color::{Bg, Fg, Reset, Rgb};
 
 use termion::{
     event::Key,
@@ -23,7 +24,7 @@ impl Terminal {
         Ok(Self {
             size: Size {
                 width: size.0,
-                height: size.1,
+                height: size.1.saturating_sub(2),
             },
             _stdout: stdout().into_raw_mode()?,
         })
@@ -61,5 +62,17 @@ impl Terminal {
     }
     pub fn clear_current_line() {
         print!("{}", termion::clear::CurrentLine)
+    }
+    pub fn set_bg_color(color: Rgb) {
+        print!("{}", Bg(color));
+    }
+    pub fn reset_bg_color() {
+        print!("{}", Bg(Reset))
+    }
+    pub fn set_fg_color(color: Rgb) {
+        print!("{}", Fg(color))
+    }
+    pub fn reset_fg_color() {
+        print!("{}", Fg(Reset))
     }
 }
