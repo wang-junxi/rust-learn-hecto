@@ -55,24 +55,24 @@ impl Terminal {
         }
     }
     pub fn cursor_hide() {
-        print!("{}", termion::cursor::Hide)
+        print!("{}", termion::cursor::Hide);
     }
     pub fn cursor_show() {
-        print!("{}", termion::cursor::Show)
+        print!("{}", termion::cursor::Show);
     }
     pub fn clear_current_line() {
-        print!("{}", termion::clear::CurrentLine)
+        print!("{}", termion::clear::CurrentLine);
     }
     pub fn set_bg_color(color: Rgb) {
         print!("{}", Bg(color));
     }
     pub fn reset_bg_color() {
-        print!("{}", Bg(Reset))
+        print!("{}", Bg(Reset));
     }
     pub fn set_fg_color(color: Rgb) {
-        print!("{}", Fg(color))
+        print!("{}", Fg(color));
     }
     pub fn reset_fg_color() {
-        print!("{}", Fg(Reset))
+        print!("{}", Fg(Reset));
     }
 }
